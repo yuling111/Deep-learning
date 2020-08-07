@@ -1,3 +1,33 @@
-Argpas
-# Deep-learning
+# Argpares（工具包使用說明）
+-是可以讓使用者知道一些註解或程式用了那些變數
+-引數 Argument 是在程式外面定義變數，就是利用argparse來完成，當然sys.argv也可以達成，
+ 但是argparse，則是相對彈性化，可以滿足絕大多數的需求。
 
+😉The basics
+import argparse
+parser=argparse.ArgumentParser()
+parser.parse_args()
+
+😉add  Positional parameter
+parser.add_argument(
+    "square",
+    help='display a square of a given number'
+    type=int
+)
+args=parser.parse_args
+print(args.square)
+
+😉add  Optional parameter
+parser.add_argument(
+    "--love","-l"       #set parameter name or flags
+    default=520,    
+    type=int
+)
+args=parser.parse_args
+print(args.love)
+
+  #common parameter in parser.add_argument()
+  name or flags: 參數的名稱，可以用縮寫，但全名要有。例如：--target, -t
+  required: 參數值是否必須(true/flase)
+  help: 參數的說明
+❓dest

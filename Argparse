@@ -3,6 +3,7 @@
 -引數 Argument 是在程式外面定義變數，就是利用argparse來完成，當然sys.argv也可以達成，
  但是argparse，則是相對彈性化，可以滿足絕大多數的需求。
 
+
 😉The basics
 import argparse
 parser=argparse.ArgumentParser()
@@ -64,6 +65,13 @@ print parser.parse_args(['-a', '-bval', '-c', '3'])#'-bval' or '-c', '3'
 ❓9.dest:當 parse_args() 剖析完後的參數屬性。若無指定此項，則為 name 的大寫全名
   10.const:  
 
-#add_argument_group:
+😉add_argument_group:
+parser = argparse.ArgumentParser(prog='PROG', add_help=False)
+group = parser.add_argument_group('group') #建立群組group
+group.add_argument('--foo', help='foo help')#在group中加入argument(parameter)
+group.add_argument('bar', help='bar help')
+
+
+
   
   

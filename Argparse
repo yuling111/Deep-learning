@@ -6,28 +6,64 @@
 😉The basics
 import argparse
 parser=argparse.ArgumentParser()
-parser.parse_args()
+parser.parse_args()   #ArgumentParser parses argument through the parse_args() method
 
-😉add  Positional parameter
+😉add  Positional parameter 一定要給值 不須要給參數名 在command line 直接給值 他會造Position 傳入
 parser.add_argument(
     "square",
     help='display a square of a given number'
     type=int
+    require=true
 )
-args=parser.parse_args
+args=parser.parse_args()
 print(args.square)
 
-😉add  Optional parameter
+😉add  Optional parameter 給不給值都可以，沒給就是Default
 parser.add_argument(
     "--love","-l"       #set parameter name or flags
     default=520,    
     type=int
 )
-args=parser.parse_args
+args=parser.parse_args()
 print(args.love)
 
+😉pass parameter
+parser.add_argument('-a', action="store_true", default=False)
+parser.add_argument('-b', action="store", dest="b")
+parser.add_argument('-c', action="store", dest="c", type=int)
+print parser.parse_args(['-a', '-bval', '-c', '3'])#'-bval' or '-c', '3'
+#output:Namespace(a=True, b='val', c=3)
+  
   #common parameter in parser.add_argument()
-  name or flags: 參數的名稱，可以用縮寫，但全名要有。例如：--target, -t
-  required: 參數值是否必須(true/flase)
-  help: 參數的說明
-❓dest
+  1.name or flags: 參數的名稱，可以用縮寫，但全名要有。例如：--target, -t
+  2.required: 參數值是否必須(true/flase)
+    *在 usage 那邊沒有用 [ ] 框起來的，代表這個參數是必須的
+    ex:--text dosesn't have [],so it is required
+        usage: test1.py [-h] [--foo FOO] --text TEXT
+        optional arguments:
+       -h, --help   show this help message and exit
+       --foo FOO    foo help
+       --text TEXT, -t TEXT  Text for program
+  3.help: 參數的說明
+❓4.dest
+❓5.action:
+    有'store','store_const','store_true','store_false','version','count','help'
+    ex:parser = argparse.ArgumentParser()
+        parser.add_argument('--verbose', '-v', action='count')
+        parser.parse_args(['-vvv'])
+        #output:Namespace(verbose=3)
+
+  6.append/append_const:
+  7.nargs:  #will be gathered together into a list.
+    *the arguments have "interger,"?","+","*"
+    arguments  of "?" is to allow optional input and output files
+    
+  8.choices:給定固定的值的,若輸入的不再choices裡，則會跳出error(參數值被限定在這些可能)
+    ex:parser = argparse.ArgumentParser(prog='game.py')
+       parser.add_argument('move', choices=['rock', 'paper', 'scissors'])
+❓9.dest:當 parse_args() 剖析完後的參數屬性。若無指定此項，則為 name 的大寫全名
+  10.const:  
+
+#add_argument_group:
+  
+  

@@ -1,0 +1,14 @@
+def load_config(args: argparse.Namespace) -> lmp.config.BaseConfig:
+
+😃bathsize:決定一次訓練的樣本數目 #影響模型的優化程度和速度
+  iteration:是重複反饋的動作，每一次iterate得到的結果都會作為下一次iterate的初始值
+    一個iterate=forwad pass+backward pass 
+  epoch:使用訓練集中的全部樣本訓練一次
+  ex: testing data=1000 batchsize=10,則訓練完整樣本及需要100次iteration 1次epoch
+  
+  
+  
+  
+  
+
+    

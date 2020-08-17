@@ -1,0 +1,14 @@
+# parser.add_argument(
+        '--is_uncased',
+        action='store_true',
+        help='Whether to convert text from upper cases to lower cases.'
+    )
+ 
+
+# Get model running device.
+    device = config.device   要用cpu or gpu training
+    
+#Vanishing gradient problem(梯度消失)
+當neural network很多層後，同樣learning rate ，較接近input layer:small gradient、learn very slow、almost random
+    
+    
